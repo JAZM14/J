@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %} //extiende la plantilla de base a base.html
+
+{% block side_bar %}{% endblock %} //posicionamiento estatico o relativo
+{% block top_bar %}{% endblock %} //posicionamiento estatico de la barra superior
+{% block page_content %}{% endblock %}//posicionamiento estatico del contenido de la pagina
+{% block footer %}{% endblock %} //posicionamiento estatico del pie de pagina
+{% block login %} //posicionamiento estatico del login
+<body class="bg-dark"> //el cuerpo
+
+
+    <div class="sufee-login d-flex align-content-center flex-wrap"> //la alineación del login en la pagina
+        <div class="container">
+            <div class="login-content"> //contenido del login
+                <div class="login-form"> //la forma del login
+                  <form class="user" method="POST">
+                    {% csrf_token %} //modo para proteger tu formulario del login para que no extraigan terceros información
+                        <div class="form-group">
+                            <label>Usuario</label> //enfoque control del Usuario al dar click
+                            <input type="text" class="form-control form-control-user" id="id_username" name="username" aria-describedby="emailHelp" placeholder="Usuario"> //Verificación de usuario
+                        </div>
+                            <div class="form-group">
+                                <label>Contraseña</label>//enfoque control de la Contraseña al dar click
+                                <input type="password" class="form-control form-control-user" id="id_password" name="password" placeholder="Contraseña"> //verificación de contraseña
+                        </div>
+                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Acceder</button>//El boton de acceder
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+{% endblock %}//termina el bloque de codigo

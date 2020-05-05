@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %} //extiende la plantilla de base a base.html
+{% block js_page %} //Determina los bloques del script
+
+<script> //Ejecutable dentro del html
+$(document).ready(function(){
+    var ctx = document.getElementById( "pieChart" ); //Muestra el valor del documento
+    ctx.height = 100; //cuanto es el peso
+    var myChart = new Chart( ctx, {
+        type: 'pie',
+        data: {
+            datasets: [ {
+                data: [ '{{becas}}', '{{b}}', '{{n}}'],
+                backgroundColor: [  //Los colores del fondo de la pagina home
+                                    "rgba(255,0,0,0.3)",
+                                    "rgba(0,255,0,0.3)",
+                                    "rgba(255,255,0,0.3)",
+                                    "rgba(192,192,192,0.3)"
+                                ],
+                hoverBackgroundColor: [ //hover permite que resalte el color al pasar el cursor sobre algun boton
+                                    "rgba(255,0,0,0.3)",
+                                    "rgba(0,255,0,0.3)",
+                                    "rgba(255,255,0,0.3)",
+                                    "rgba(192,192,192,0.3)"
+                                ]
+
+                            } ],
+            labels: ['Total de Registros', 'Becas Entregadas', 'Becas No Entregadas' ]//Establece el enfoque de control alhacer clic en su etiqueta
+        },
+        options: {
+            responsive: true
+        }
+    } );
+
+
+});
+</script>
+
+{% endblock %}//Aqui termina el bloque anterior
+{% block page_content %} //delitima el bloque de todo el contenido de la pagina
+<div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Escritorio</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active">Escritorio</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content mt-3">
+
+            <div class="col-sm-12">
+                <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                    <span class="badge badge-pill badge-success">Bienvenido</span> {{ user.first_name | upper}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+
+
+        </div> <!-- .content -->
+
+
+
+            <canvas id="pieChart"></canvas>
+
+
+{% endblock %}
